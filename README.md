@@ -7,4 +7,4 @@ Features:
 * very informative
 
 
-<img src="https://github.com/fadeouter/argosWeather/raw/master/screenshot.png" width="200">
+<img src="https://github.com/fadeouter/argosWeather/raw/master/screenshot.png" width="400">
