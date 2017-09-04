@@ -361,12 +361,12 @@ def get_wx():
                 if wd['uvi{0}'.format(item)] <= '6':
                     wd['uvcol{0}'.format(item)] = 'wheat'
                 wd['uv{0}'.format(item)] = str(int(wx['hourly']['data'][item]['uvIndex']) * 1.81)
-     #      if 'precipProbability' in wx['hourly']['data'][0]:
+            if 'precipProbability' in wx['hourly']['data'][0]:
      #           wd['op{0}'.format(item)] = str((wx['hourly']['data'][item]['precipProbability'] * 1.5 - 0.5) * .5 + .3)
-     #           wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipProbability'] * 10)
+                wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipProbability'] * 10)
             if 'precipIntensity' in wx['hourly']['data'][0]:
                 wd['op{0}'.format(item)] = str(wx['hourly']['data'][item]['precipIntensity'] * .3 + .3)
-                wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipIntensity'] * 1.2)
+     #           wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipIntensity'] * 1.2)
             if 'cloudCover' in wx['hourly']['data'][0]:
                 wd['cl{0}'.format(item)] = str(wx['hourly']['data'][item]['cloudCover'] * 20)
     except KeyError:
