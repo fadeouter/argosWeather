@@ -9,11 +9,10 @@ Features:
 * very informative
 
 Description:
-Red graph: temperature
-Gray filled graph: cloud cover
-Blue filled graph: precipitation probability
-Blue filled graph color: precipitation intensity
-Yellow filled graph: UV index
-
+* Red graph: temperature
+* Gray filled graph: cloud cover
+* Blue filled graph: precipitation probability
+* Blue filled graph color: precipitation intensity
+* Yellow filled graph: UV index
 
 <img src="https://github.com/fadeouter/argosWeather/raw/master/screenshot.png" width="400">
