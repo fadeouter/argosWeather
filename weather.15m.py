@@ -27,7 +27,7 @@ iconFontColor = '#aaa'  # for dark theme
 scale = '1'
 
 # get yours at https://darksky.net/dev
-api_key = '459988fc1193c32094afbe6f29e6fdaf'
+api_key = ''
 
 # set to si for metric, leave blank for imperial
 units = 'si'
