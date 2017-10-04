@@ -16,3 +16,9 @@ Description:
 * Yellow filled graph: UV index
 
 <img src="https://github.com/fadeouter/argosWeather/raw/master/screenshot.png" width="400">
+
+<h1>How to debug and file issue?</h1>
+
+If you expirience troubles, please, run script in terminal and paste output to ticket. Thanks!
+
+```python ~/.config/argos/weather.15m.py```
