@@ -20,7 +20,7 @@ from random import randint
 highlight = '#fff'      # set #555 for light theme
 textcolor = '#fff'      # set #222 for light theme
 font = 'Ubuntu'         # i recommend not to change this
-cloudopacity = '0.5'    # set 0.5~1 for dark theme
+cloudopacity = '0.8'    # set 0.8~1 for dark theme, 0.15 for light
 iconFontColor = '#aaa'  # for dark theme
 
 # scale factor for your DPI
@@ -450,12 +450,7 @@ def gen_svg():
 # generate cloud graph
     if 'cl0' in wd:
         svg['clouds'] = '\
-    <filter id="clouds">\
-            <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="1" seed="5" />\
-            <feComposite operator="in" in="TURBULENCE" in2="SourceAlpha" />\
-            <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"/>\
-    </filter>\
-    <path filter="url(#clouds)" fill="'+textcolor+'" opacity="'+cloudopacity+'" stroke="none" d="M 0,0 L \
+    <path fill="'+textcolor+'" opacity="'+cloudopacity+'" stroke="none" d="M 0,0 L \
         0,'+wd['cl0']+' 5,'+wd['cl1']+' 10,'+wd['cl2']+', 15,'+wd['cl3']+' 20,'+wd['cl4']+' \
      25,'+wd['cl5']+' 30,'+wd['cl6']+' 35,'+wd['cl7']+' 40,'+wd['cl8']+' 45,'+wd['cl9']+' \
      50,'+wd['cl10']+' 55,'+wd['cl11']+' 60,'+wd['cl12']+' 65,'+wd['cl13']+' 70,'+wd['cl14']+' \
