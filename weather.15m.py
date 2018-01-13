@@ -33,7 +33,7 @@ api_key = ''
 units = 'si'
 
 # manual location if you won't use autolocation
-man_loc = '54.7903,32.0504'
+man_loc = ''
 
 # manual name for location
 man_name = ''
