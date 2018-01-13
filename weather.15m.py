@@ -17,11 +17,11 @@ import datetime
 from random import randint
 
 # appearance
-highlight = '#fff'      # set #555 for light theme
-textcolor = '#fff'      # set #222 for light theme
-font = 'Ubuntu'         # i recommend not to change this
-cloudopacity = '0.8'    # set 0.8~1 for dark theme, 0.15 for light
-iconFontColor = '#aaa'  # for dark theme
+svgtextcolor = '#fff'      # set #222 for light theme
+highlight = '#fff'         # set #555 for light theme
+cloudopacity = '0.8'       # set 0.8~1 for dark theme, 0.15 for light
+font = 'Ubuntu'            # my recommendation is to use Ubuntu font
+mainiconfontcolor = '#aaa' # for dark theme
 
 # scale factor for your DPI
 scale = '1'
