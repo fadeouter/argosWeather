@@ -24,7 +24,7 @@ font = 'Ubuntu'             # my recommendation is to use Ubuntu font
 mainiconfontcolor = '#ccc'  # color for text of panel icon
 
 # scale factor for your DPI
-scale = '1.6'
+scale = '1'
 
 # get yours at https://darksky.net/dev
 api_key = ''
