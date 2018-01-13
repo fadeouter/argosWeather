@@ -17,14 +17,14 @@ import datetime
 from random import randint
 
 # appearance
-svgtextcolor = '#fff'      # set #222 for light theme
-highlight = '#fff'         # set #555 for light theme
-cloudopacity = '0.8'       # set 0.8~1 for dark theme, 0.15 for light
-font = 'Ubuntu'            # my recommendation is to use Ubuntu font
-mainiconfontcolor = '#aaa' # for dark theme
+svgtextcolor = '#fff'       # set #444 for light theme
+highlight = '#fff'          # set #555 for light theme
+cloudopacity = '0.8'        # set 0.8~1 for dark theme, 0.15 for light
+font = 'Ubuntu'             # my recommendation is to use Ubuntu font
+mainiconfontcolor = '#ccc'  # color for text of panel icon
 
 # scale factor for your DPI
-scale = '1'
+scale = '1.6'
 
 # get yours at https://darksky.net/dev
 api_key = ''
