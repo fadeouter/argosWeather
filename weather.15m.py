@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 """Docstring"""
 
@@ -33,7 +33,7 @@ api_key = ''
 units = 'si'
 
 # manual location if you won't use autolocation
-man_loc = ''
+man_loc = '54.7903,32.0504'
 
 # manual name for location
 man_name = ''
@@ -362,11 +362,11 @@ def get_wx():
                     wd['uvcol{0}'.format(item)] = 'wheat'
                 wd['uv{0}'.format(item)] = str(int(wx['hourly']['data'][item]['uvIndex']) * 1.81)
             if 'precipProbability' in wx['hourly']['data'][0]:
-     #           wd['op{0}'.format(item)] = str((wx['hourly']['data'][item]['precipProbability'] * 1.5 - 0.5) * .5 + .3)
+        #        wd['op{0}'.format(item)] = str((wx['hourly']['data'][item]['precipProbability'] * 1.5 - 0.5) * .5 + .5)
                 wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipProbability'] * 10)
             if 'precipIntensity' in wx['hourly']['data'][0]:
                 wd['op{0}'.format(item)] = str(wx['hourly']['data'][item]['precipIntensity'] * .3 + .3)
-     #           wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipIntensity'] * 1.2)
+        #        wd['p{0}'.format(item)] = str(wx['hourly']['data'][item]['precipIntensity'] * 1.2)
             if 'cloudCover' in wx['hourly']['data'][0]:
                 wd['cl{0}'.format(item)] = str(wx['hourly']['data'][item]['cloudCover'] * 20)
     except KeyError:
@@ -384,7 +384,8 @@ def gen_svg():
     svg['temp'] = ''
     svg['text'] = ''
     svg['now'] = ''
-    svg['header'] = '<svg xmlns="http://www.w3.org/2000/svg" width="920px" height="350px" viewBox="0 0 115 43.75" font-family="'+font+',sans-serif" style="font-weight:normal" fill="#555555"    transform="translate(0,350) scale(1, -1)">\
+    svg['header'] = '<svg xmlns="http://www.w3.org/2000/svg" width="920px" height="350px" viewBox="0 0 115 43.75">\
+    <g font-family="'+font+',sans-serif" style="font-weight:normal" fill="#555555" transform="translate(0,43.75) scale(1, -1)">\
     <g id="graphs" transform="translate(0,5)">'
 # generate uvindex graph
     if 'uvi0' in wd:
@@ -450,7 +451,7 @@ def gen_svg():
 # generate cloud graph
     if 'cl0' in wd:
         svg['clouds'] = '\
-    <path fill="'+textcolor+'" opacity="'+cloudopacity+'" stroke="none" d="M 0,0 L \
+    <path fill="'+svgtextcolor+'" opacity="'+cloudopacity+'" stroke="none" d="M 0,0 L \
         0,'+wd['cl0']+' 5,'+wd['cl1']+' 10,'+wd['cl2']+', 15,'+wd['cl3']+' 20,'+wd['cl4']+' \
      25,'+wd['cl5']+' 30,'+wd['cl6']+' 35,'+wd['cl7']+' 40,'+wd['cl8']+' 45,'+wd['cl9']+' \
      50,'+wd['cl10']+' 55,'+wd['cl11']+' 60,'+wd['cl12']+' 65,'+wd['cl13']+' 70,'+wd['cl14']+' \
@@ -469,7 +470,7 @@ def gen_svg():
     \
     \
     \
-    <g stroke-width=".2" font-size="3" style="font-weight:700;font-family:'+font+',Roboto,Cantarell,sans-serif" transform="translate(113.5,2)    scale(-1, 1)" fill="'+ textcolor +'"> \
+    <g stroke-width=".2" font-size="3" style="font-weight:700;font-family:'+font+',Roboto,Cantarell,sans-serif" transform="translate(113.5,2)    scale(-1, 1)" fill="'+ svgtextcolor +'"> \
      <text x="5" y="'+wd['tr22']+'"    transform="rotate(180 5 '+wd['tr22']+')">\
      <tspan text-anchor="middle">' + wd['t22'] + '°</tspan>\
      </text> \
@@ -501,7 +502,7 @@ def gen_svg():
         svg['text'] = '\
     <g id="current-icon" transform="translate(1.5,42.5) scale(0.095, -0.095)">' + wd['icon'] + '</g> \
     \
-    <g id="main-text" transform="translate(0,45) scale(1, -1)" fill="'+ textcolor +'"> \
+    <g id="main-text" transform="translate(0,45) scale(1, -1)" fill="'+ svgtextcolor +'"> \
         <text x="18" y="13" font-size="13"> \
             <tspan word-spacing="0" font-family="'+font+' Mono, monospace" style="font-weight:normal">' + wd['temperature'] + '°</tspan> \
         </text> \
@@ -514,19 +515,19 @@ def gen_svg():
         \
         \
         <g transform="translate(102,2)"> \
-        <rect x="-5" y="0.5" height="14.5" width="0.2" fill="'+ textcolor +'" opacity="0.2" /> \
-        <text x="1" y="3" fill="'+ textcolor +'" font-size="3"> <tspan>'+ wd['pressure']+'</tspan><tspan font-size="2.5"> mb</tspan></text>' + wd['pr_symbol'] + '\
+        <rect x="-5" y="0.5" height="14.5" width="0.2" fill="'+ svgtextcolor +'" opacity="0.2" /> \
+        <text x="1" y="3" fill="'+ svgtextcolor +'" font-size="3"> <tspan>'+ wd['pressure']+'</tspan><tspan font-size="2.5"> mb</tspan></text>' + wd['pr_symbol'] + '\
         \
         \
         <polygon stroke="' + wd["windClass"]['outline'] + '" stroke-width="0.5" fill="' + wd["windClass"]['colour'] + '" points="1.5,0 0,3 1.5,2.5 3,3" transform="translate(-2.5, 6)    rotate('+ wd["windBearing"] +' 1.2 1.5) scale(0.8,1)"/>\
-        <text x="1.2" y="8.5" fill="'+ textcolor +'"  font-size="3"> <tspan>' + wd["windSpeed"] + wd['windGust'] + '</tspan><tspan font-size="2.5"> ' + distance + '</tspan></text>\
+        <text x="1.2" y="8.5" fill="'+ svgtextcolor +'"  font-size="3"> <tspan>' + wd["windSpeed"] + wd['windGust'] + '</tspan><tspan font-size="2.5"> ' + distance + '</tspan></text>\
         \
         \
         <g transform="translate(-2.8,11.7) scale(0.02, 0.02)"> '+humidity+' </g> \
-        <text x="1.2" y="14" fill="'+ textcolor +'"   font-size="3"> <tspan>'+ wd['humidity']+'%</tspan></text></g> \
+        <text x="1.2" y="14" fill="'+ svgtextcolor +'"   font-size="3"> <tspan>'+ wd['humidity']+'%</tspan></text></g> \
         \
         \
-    <g stroke-width=".2" font-size="3.3" fill="'+ textcolor +'" transform="translate(-1.5,44.5)"> \
+    <g stroke-width=".2" font-size="3.3" fill="'+ svgtextcolor +'" transform="translate(-1.5,44.5)"> \
      <text x="5" y="0"><tspan text-anchor="middle">' + wd['h1'] + '</tspan></text> \
      <text x="20" y="0"> <tspan text-anchor="middle">' + wd['h4'] + '</tspan></text> \
      <text x="35" y="0"> <tspan text-anchor="middle">' + wd['h7'] + '</tspan></text> \
@@ -537,12 +538,13 @@ def gen_svg():
      <text x="110" y="0"> <tspan text-anchor="middle">' + wd['h22'] + '</tspan></text> \
     </g>\
     </g>\
+    </g>\
     </svg>'
 # generate separate images with daily conditions
     wd['dday0'] = '<tspan style="font-weight:bold">Today</tspan>'
     if 'dmin0' in wd:
         for item in range(8):
-            svg['day{0}'.format(item)] = '<svg xmlns="http://www.w3.org/2000/svg" width="810px" height="40px" viewBox="0 0 101.25 5" font-size="3.1" fill="'+ textcolor +'" font-family="'+font+'">\
+            svg['day{0}'.format(item)] = '<svg xmlns="http://www.w3.org/2000/svg" width="810px" height="40px" viewBox="0 0 101.25 5"><g font-size="3.1" fill="'+ svgtextcolor +'" font-family="'+font+'">\
             \
             \
             <g transform="translate(0,0.5)">\
@@ -569,12 +571,12 @@ def gen_svg():
             </g>\
             \
             <g transform="translate(68,0)"> \
-            <text x="0" y="3" fill="'+ textcolor +'"> <tspan>'+ wd['dpr{0}'.format(item)]+'</tspan><tspan font-size="2.5"> mb</tspan></text>' + wd['pr_symbol{0}'.format(item)] + '</g>\
+            <text x="0" y="3" fill="'+ svgtextcolor +'"> <tspan>'+ wd['dpr{0}'.format(item)]+'</tspan><tspan font-size="2.5"> mb</tspan></text>' + wd['pr_symbol{0}'.format(item)] + '</g>\
             \
             <polygon stroke="' + wd["windClass{0}".format(item)]['outline'] + '" stroke-width="0.5" fill="' + wd["windClass{0}".format(item)]['colour'] + '" points="1.5,0 0,3 1.5,2.5 3,3" transform="translate(84, 0.5)    rotate('+ wd["windBearing{0}".format(item)] +' 1.2 1.5) scale(0.8,1)"/>\
-            <text x="88" y="3" fill="'+ textcolor +'"> <tspan>' + wd["windSpeed{0}".format(item)]     + '</tspan><tspan font-size="2.5"> ' + distance + '</tspan></text>\
+            <text x="88" y="3" fill="'+ svgtextcolor +'"> <tspan>' + wd["windSpeed{0}".format(item)]     + '</tspan><tspan font-size="2.5"> ' + distance + '</tspan></text>\
             \
-            </g></svg>'
+            </g></g></svg>'
 #
 # concatenate svg sections and convert to base64
 #
@@ -674,11 +676,11 @@ def print_main():
 # generate system bar icon
 #
     mainIconWidth = str(int(120 + lentemp + lentemp2))
-    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'" fill="'+iconFontColor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">' + wd['icon'] + '<text x="155" y="95" ><tspan>'+wd['temperature']+'°</tspan><tspan font-size="20"> </tspan><tspan>'+nextConditionSymbol+' ⁣ ⁣<tspan font-size="120"> </tspan>'+nextCondition+'°</tspan></text>\
+    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">' + wd['icon'] + '<text x="155" y="95" ><tspan>'+wd['temperature']+'°</tspan><tspan font-size="20"> </tspan><tspan>'+nextConditionSymbol+' ⁣ ⁣<tspan font-size="120"> </tspan>'+nextCondition+'°</tspan></text>\
     \
     <g transform="translate('+str(translate)+',0)">' + nextIcon +'</g>\
     \
-    </g></svg>'))
+    </g></g></svg>'))
 
     print '| imageHeight='+iconHeight+' image=' + mainIcon
     print '---'
@@ -728,5 +730,3 @@ def checks():
         print 'Refresh | refresh=true iconName=view-refresh-symbolic'
 
 checks()
-
-
