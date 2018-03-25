@@ -555,7 +555,7 @@ def gen_svg():
                 \
                 <path fill="none" stroke="wheat" stroke-linecap="round" stroke-width="3.8" d="M'+wd['dminpos{0}'.format(item)]+',2 '+wd['dmaxpos{0}'.format(item)]+',2"/>\
                 \
-                <text x="'+wd['dminpos{0}'.format(item)]+'" y="3" transform="translate(-0.5,0)" text-anchor="start"> '+wd['dmin{0}'.format(item)]+'</text> \
+                <text x="'+wd['dminpos{0}'.format(item)]+'" y="3.5" transform="translate(-0.5,0)" text-anchor="start"> '+wd['dmin{0}'.format(item)]+'</text> \
                 \
                 <linearGradient id="overlay" x1="0" x2="1" y1="0" y2="0"> \
                 <stop offset="0%" stop-opacity="0" stop-color="wheat"/> \
@@ -565,7 +565,7 @@ def gen_svg():
                 \
                 <rect fill="url(#overlay)" height="3.5" width="5.5" x="'+ wd['dmaxpos{0}'.format(item)] +'" y="0.3" transform="translate(-4.6,0)"/>\
                 \
-                <text x="'+ wd['dmaxpos{0}'.format(item)] +'" y="3" text-anchor="end" transform="translate(2.5,0)">'+ wd['dmax{0}'.format(item)] +'</text> \
+                <text x="'+ wd['dmaxpos{0}'.format(item)] +'" y="3.5" text-anchor="end" transform="translate(1.5,0)">'+ wd['dmax{0}'.format(item)] +'</text> \
                 \
                 \
             </g>\
@@ -728,6 +728,5 @@ def checks():
         print_main()
     else:
         print 'Refresh | refresh=true iconName=view-refresh-symbolic'
-
 
 checks()
