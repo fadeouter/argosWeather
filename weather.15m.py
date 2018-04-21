@@ -676,7 +676,7 @@ def print_main():
 # generate system bar icon
 #
     mainIconWidth = str(int(120 + lentemp + lentemp2))
-    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">' + wd['icon'] + '<text x="155" y="95" >'+wd['temperature']+'°<tspan font-size="20"> </tspan>'+nextConditionSymbol+' ⁣ ⁣<tspan font-size="120">'+nextCondition+'°</tspan></text>\
+    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">'+wd['icon']+'<text font-size="100" x="155" y="95" >'+wd['temperature']+'°<tspan font-size="20"> </tspan>'+nextConditionSymbol+'</text><text font-size="100" x="552" y="95" >'+nextCondition+'°</text>\
     \
     <g transform="translate('+str(translate)+',0)">' + nextIcon +'</g>\
     \
