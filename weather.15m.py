@@ -55,6 +55,7 @@ graphHeight = str(int(175 * scale))
 graphWidth = str(int(460 * scale))
 iconHeight = str(int(25 * scale))
 hostname = "api.darksky.net"
+port = "80"
 
 def get_location():
     try:
@@ -516,15 +517,15 @@ def gen_svg():
         \
         <g transform="translate(102,2)"> \
         <rect x="-5" y="0.5" height="14.5" width="0.2" fill="'+ svgtextcolor +'" opacity="0.2" /> \
-        <text x="1" y="3" fill="'+ svgtextcolor +'" font-size="3"> <tspan>'+ wd['pressure']+'</tspan><tspan font-size="2.5"> mb</tspan></text>' + wd['pr_symbol'] + '\
+        <text x="1" y="3" fill="'+ svgtextcolor +'" font-size="3">'+ wd['pressure']+'<tspan font-size="2.5">mb</tspan></text>' + wd['pr_symbol'] + '\
         \
         \
         <polygon stroke="' + wd["windClass"]['outline'] + '" stroke-width="0.5" fill="' + wd["windClass"]['colour'] + '" points="1.5,0 0,3 1.5,2.5 3,3" transform="translate(-2.5, 6)    rotate('+ wd["windBearing"] +' 1.2 1.5) scale(0.8,1)"/>\
-        <text x="1.2" y="8.5" fill="'+ svgtextcolor +'"  font-size="3"> <tspan>' + wd["windSpeed"] + wd['windGust'] + '</tspan><tspan font-size="2.5"> ' + distance + '</tspan></text>\
+        <text x="1.2" y="8.5" fill="'+ svgtextcolor +'"  font-size="3">' + wd["windSpeed"] + wd['windGust'] + '<tspan font-size="2.5">' + distance + '</tspan></text>\
         \
         \
         <g transform="translate(-2.8,11.7) scale(0.02, 0.02)"> '+humidity+' </g> \
-        <text x="1.2" y="14" fill="'+ svgtextcolor +'"   font-size="3"> <tspan>'+ wd['humidity']+'%</tspan></text></g> \
+        <text x="1.2" y="14" fill="'+ svgtextcolor +'"   font-size="3">'+ wd['humidity']+'%</text></g> \
         \
         \
     <g stroke-width=".2" font-size="3.3" fill="'+ svgtextcolor +'" transform="translate(-1.5,44.5)"> \
@@ -548,14 +549,14 @@ def gen_svg():
             \
             \
             <g transform="translate(0,0.5)">\
-            <text x="0.1" y="3"> <tspan>'+wd['dday{0}'.format(item)]+'</tspan> </text> \
+            <text x="0.1" y="3">'+wd['dday{0}'.format(item)]+'</text> \
             <g transform="translate(16,-0.5) scale(0.035, 0.035)"> '+wd['dicon{0}'.format(item)]+' </g> \
             <g transform="translate(28.5,0)" font-weight="700" font-size="2.8" fill="#333">\
                 <path fill="none" stroke="rgba(0,0,0,.2)" stroke-linecap="round" stroke-width="3.8" d="M'+wd['dminpos{0}'.format(item)]+',2 '+wd['dmaxpos{0}'.format(item)]+',2" transform="translate(0.3,0.3)"/>\
                 \
                 <path fill="none" stroke="wheat" stroke-linecap="round" stroke-width="3.8" d="M'+wd['dminpos{0}'.format(item)]+',2 '+wd['dmaxpos{0}'.format(item)]+',2"/>\
                 \
-                <text x="'+wd['dminpos{0}'.format(item)]+'" y="3" transform="translate(-0.5,0)" text-anchor="start"> <tspan>'+wd['dmin{0}'.format(item)]+'</tspan> </text> \
+                <text x="'+wd['dminpos{0}'.format(item)]+'" y="3.5" transform="translate(-0.5,0)" text-anchor="start"> '+wd['dmin{0}'.format(item)]+'</text> \
                 \
                 <linearGradient id="overlay" x1="0" x2="1" y1="0" y2="0"> \
                 <stop offset="0%" stop-opacity="0" stop-color="wheat"/> \
@@ -565,16 +566,16 @@ def gen_svg():
                 \
                 <rect fill="url(#overlay)" height="3.5" width="5.5" x="'+ wd['dmaxpos{0}'.format(item)] +'" y="0.3" transform="translate(-4.6,0)"/>\
                 \
-                <text x="'+ wd['dmaxpos{0}'.format(item)] +'" y="3" text-anchor="end" transform="translate(2.5,0)"> <tspan>'+ wd['dmax{0}'.format(item)] +'</tspan> </text> \
+                <text x="'+ wd['dmaxpos{0}'.format(item)] +'" y="3.5" text-anchor="end" transform="translate(1.5,0)">'+ wd['dmax{0}'.format(item)] +'</text> \
                 \
                 \
             </g>\
             \
             <g transform="translate(68,0)"> \
-            <text x="0" y="3" fill="'+ svgtextcolor +'"> <tspan>'+ wd['dpr{0}'.format(item)]+'</tspan><tspan font-size="2.5"> mb</tspan></text>' + wd['pr_symbol{0}'.format(item)] + '</g>\
+            <text x="0" y="3" fill="'+ svgtextcolor +'">'+ wd['dpr{0}'.format(item)]+'<tspan font-size="2.5">mb</tspan></text>' + wd['pr_symbol{0}'.format(item)] + '</g>\
             \
             <polygon stroke="' + wd["windClass{0}".format(item)]['outline'] + '" stroke-width="0.5" fill="' + wd["windClass{0}".format(item)]['colour'] + '" points="1.5,0 0,3 1.5,2.5 3,3" transform="translate(84, 0.5)    rotate('+ wd["windBearing{0}".format(item)] +' 1.2 1.5) scale(0.8,1)"/>\
-            <text x="88" y="3" fill="'+ svgtextcolor +'"> <tspan>' + wd["windSpeed{0}".format(item)]     + '</tspan><tspan font-size="2.5"> ' + distance + '</tspan></text>\
+            <text x="88" y="3" fill="'+ svgtextcolor +'">' + wd["windSpeed{0}".format(item)] + '<tspan font-size="2.5">' + distance + '</tspan></text>\
             \
             </g></g></svg>'
 #
@@ -676,7 +677,7 @@ def print_main():
 # generate system bar icon
 #
     mainIconWidth = str(int(120 + lentemp + lentemp2))
-    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">' + wd['icon'] + '<text x="155" y="95" ><tspan>'+wd['temperature']+'°</tspan><tspan font-size="20"> </tspan><tspan>'+nextConditionSymbol+' ⁣ ⁣<tspan font-size="120"> </tspan>'+nextCondition+'°</tspan></text>\
+    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">'+wd['icon']+'<text font-size="100" x="155" y="95" xml:space="preserve">'+wd['temperature']+'°<tspan font-size="20"> </tspan>'+nextConditionSymbol+'   '+nextCondition+'°</text>\
     \
     <g transform="translate('+str(translate)+',0)">' + nextIcon +'</g>\
     \
@@ -690,12 +691,11 @@ def print_main():
 # check if internet connection is present
 #
 def ping():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        response = os.system("ping -c 1 -w2 " + hostname + " > /dev/null 2>&1")
-        if response != 0:
-            return False
-        else:
-            return True
+        s.connect((hostname, int(port)))
+        s.shutdown(2)
+        return True
     except:
         return False
 
@@ -714,6 +714,7 @@ def checks():
                 print '| imageHeight=' + imageHeight + ' image=' + nodata
                 print '---'
                 print 'No Internet connection | iconName=dialog-warning-symbolic'
+        	print 'Check DarkSky status | href=http://status.darksky.net/ iconName=web-browser-symbolic'
                 check = False
 #
     if api_key == '':
