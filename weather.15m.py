@@ -688,7 +688,7 @@ def print_main():
 #
     gen_svg()
 #
-# check if internet connection is present
+# check if internet connection is present. new way.
 #
 def ping():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
