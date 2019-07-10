@@ -670,15 +670,15 @@ def print_main():
 
     lentemp = int((len(wd['temperature']) * 24) - 10)
     if nextCondition:
-        lentemp2 = int(145 + (len(nextCondition) * 24))
+        lentemp2 = int(155 + (len(nextCondition) * 24))
     else:
         lentemp2 = 0
-    translate = int(300 + (len(wd['temperature']) * 50))
+    translate = int(340 + (len(wd['temperature']) * 50))
 #
 # generate system bar icon
 #
-    mainIconWidth = str(int(120 + lentemp + lentemp2))
-    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.5,.5) translate(0,15)">'+wd['icon']+'<text font-size="100" x="155" y="95" xml:space="preserve">'+wd['temperature']+'°<tspan font-size="20"> </tspan>'+nextConditionSymbol+'   '+nextCondition+'°</text>\
+    mainIconWidth = str(int(120 + lentemp + lentemp2 - 25))
+    mainIcon = base64.b64encode(bytes('<svg xmlns="http://www.w3.org/2000/svg" height="80" width="'+mainIconWidth+'"><g fill="'+mainiconfontcolor+'" font-family="'+font+' Mono,monospace" font-weight="900" font-size="100"><g transform="scale(.45,.45) translate(0,20)">'+wd['icon']+'<text font-size="100" x="150" y="95" xml:space="preserve">'+wd['temperature']+'°<tspan font-size="18"> </tspan>'+nextConditionSymbol+'      '+nextCondition+'°</text>\
     \
     <g transform="translate('+str(translate)+',0)">' + nextIcon +'</g>\
     \
